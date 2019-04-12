@@ -8,7 +8,7 @@ Our goal is to create a desktop application written in Java for front end and SQ
 <br>
 Team: Moogle
 <br>
-Team member: moayad-badawi, yurikong, PingCW
+Team member: moayad-badawi, yurikong, tbntechno, PingCW
 
 
 wiki link: https://github.com/moayad-badawi/Project-343-/wiki
