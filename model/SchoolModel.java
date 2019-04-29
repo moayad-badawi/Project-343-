@@ -4,6 +4,7 @@ import datatypes.*;
 import database.*;
 import java.util.ArrayList;
 import java.util.TreeMap;
+import java.time.LocalDate;
 
 public class SchoolModel
 {
@@ -36,11 +37,23 @@ public class SchoolModel
 	{
 		return SessionsTable.getInstance().getData();
 	}
+	public String getCurrentTerm()
+	{
+		String term = "";
+		LocalDate date = LocalDate.now();
+		int month = date.getMonthValue();
+		if(month >= 1 && month <= 6)
+			term += "Spring";
+		if(month >= 7 && month <= 12)
+			term += "Fall";
+		term += " " + Integer.toString(date.getYear());
+		return term;
+	}
 	public TreeMap<String, ArrayList<Session>> getSessionScheduleByTerm()
 	{
 		TreeMap<String, ArrayList<Session>> sessionScheduleByTerm = new TreeMap<>();
 		ArrayList<String> terms = new ArrayList<>();					// all terms
-		for(int i = 0; i < SessionsTable.getInstance().getID(); i++)	// find all terms
+		for(int i = 0; i < SessionsTable.getInstance().getData().size(); i++)	// find all terms
 		{
 			Session session = SessionsTable.getInstance().getData().get(i);
 			String term = session.semester() + ' ' + Integer.toString(session.year());
