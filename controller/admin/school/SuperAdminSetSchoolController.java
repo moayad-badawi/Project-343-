@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import model.SchoolModel;
 import view.AdminView;
 
-public class SuperAdminSetSchoolInfoController implements ActionListener  {
+public class SuperAdminSetSchoolController implements ActionListener  {
 	private AdminView view;
 	private SchoolModel schlModel;
-	public SuperAdminSetSchoolInfoController(AdminView view, SchoolModel schlModel) {
+	public SuperAdminSetSchoolController(AdminView view, SchoolModel schlModel) {
 		this.view = view;
 		this.schlModel = schlModel;
 	}

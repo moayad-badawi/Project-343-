@@ -266,7 +266,7 @@ public class StudentView extends JFrame {
 		//Init table
 		stdScheduleTableHeader  = new String[] {"CRN", "Course Name", "Room", "Time", "Intructor"};	 // init
 		stdScheduleTable = new JTable( new DefaultTableModel(new Object[][] {}, stdScheduleTableHeader) ){
-				public boolean isCellEditable(int row, int column) {
+			public boolean isCellEditable(int row, int column) {
 				return false; 
 			}
 		};
