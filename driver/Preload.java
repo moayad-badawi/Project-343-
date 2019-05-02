@@ -1,5 +1,5 @@
 package driver;
-
+// add roomsTable
 import database.*;
 import datatypes.*;
 import java.util.ArrayList;
@@ -56,7 +56,7 @@ public class Preload
 		AdminsTable.getInstance().getData().put(admin.id(), admin);
 		// employee, user 2, dean
 		uid = UsersTable.getInstance().getID();
-		user = new User(uid, "2", "employee");
+		user = new User(uid, "employee", "employee");
 		UsersTable.getInstance().getData().put(user.id(), user);
 		sessions = new ArrayList<>();
 		Employee employee = new Employee(uid, "Mo", "Mo", "Mo", "dean", 1000, sessions);
@@ -79,7 +79,7 @@ public class Preload
 		EmployeesTable.getInstance().getData().put(employee.id(), employee);
 		// student, user 5
 		uid = UsersTable.getInstance().getID();
-		user = new User(uid, "5", "student");
+		user = new User(uid, "student", "student");
 		UsersTable.getInstance().getData().put(user.id(), user);
 		sessions = new ArrayList<>();
 		sessions.add(0);		// CECS 225
@@ -87,11 +87,11 @@ public class Preload
 		Student student = new Student(uid, "O", "M", "G", "Computer Science", "Paid", sessions);
 		StudentsTable.getInstance().getData().put(student.id(), student);
 		// building
-		Room room = new Room(0, 30);
-		ArrayList<Room> rooms = new ArrayList<>();
-		rooms.add(room);
-		Building building = new Building("VEC", rooms);
-		BuildingsTable.getInstance().getData().put(building.name(), building);
+		Room room = new Room(0, 30, "VEC");			// room 0
+		//ArrayList<Room> rooms = new ArrayList<>();
+		//rooms.add(room);
+		//Building building = new Building("VEC", rooms);
+		//BuildingsTable.getInstance().getData().put(building.name(), building);
 		// session 0, of CECS 225 (cid = 0), instructorID = 4, 
 		int sid = SessionsTable.getInstance().getID();
 		LocalTime startTime = LocalTime.of(11, 00);

@@ -113,10 +113,14 @@ public class StudentModel
 		{															// case = 0: same semester, can add
 			if(sessionSem.compareToIgnoreCase(currentSem) <= 0)		// case < 0: fall(future session) vs spring(current) , can add, no conflict
 				return false;
-			return true;							// case > 0: spring(previos semester) vs fall(current semester), cannot add, conflict
+			return true;							// case > 0: spring(previous semester) vs fall(current semester), cannot add, conflict
 		}
 	}
 	public boolean isTimeConflict(int studentID, int sessionID, String term)	// check day time against sessions enrolled by student by term
+	{
+		
+	}
+	public boolean isRoomConflict(int studentID, int sessionID, String term)		// check building and room against sessions enrolled by student by term
 	{
 		
 	}

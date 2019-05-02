@@ -14,7 +14,7 @@ public class Session
 	private int year;
 	private String day;				// MW or TTh
 	private String buildingName;
-	private int roomNumber;
+	private int roomNumber; // change this to roomID
 	private int occupancyLimit;
 	private ArrayList<Integer> roster; // id of students enrolled
 	public Session(int id, int cid, int instructorID, LocalTime startTime, LocalTime endTime, String semester, int year, String day, String buildingName, int roomNumber, int occupancyLimit, ArrayList<Integer> roster)
