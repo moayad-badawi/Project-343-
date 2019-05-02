@@ -37,17 +37,24 @@ public class SchoolModel
 	{
 		return SessionsTable.getInstance().getData();
 	}
-	public String getCurrentTerm()
+	public String getCurrentSemester()
 	{
-		String term = "";
+		String semester = "";
 		LocalDate date = LocalDate.now();
 		int month = date.getMonthValue();
 		if(month >= 1 && month <= 6)
-			term += "Spring";
+			semester += "Spring";
 		if(month >= 7 && month <= 12)
-			term += "Fall";
-		term += " " + Integer.toString(date.getYear());
-		return term;
+			semester += "Fall";
+		return semester;
+	}
+	public int getCurrentYear()
+	{
+		return LocalDate.now().getYear();
+	}
+	public String getCurrentTerm()
+	{
+		return getCurrentSemester() + ' ' + Integer.toString(getCurrentYear());
 	}
 	public TreeMap<String, ArrayList<Session>> getSessionScheduleByTerm()
 	{

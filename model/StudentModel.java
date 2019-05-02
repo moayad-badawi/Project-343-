@@ -4,6 +4,7 @@ import datatypes.Student;
 import datatypes.Employee;
 import datatypes.Session;
 import database.StudentsTable;
+import database.UniversityInformationTable;
 import database.CoursesTable;
 import database.EmployeesTable;
 import database.SessionsTable;
@@ -63,14 +64,60 @@ public class StudentModel
 			for(int i = 0; i < sessions.size(); i++)
 			{
 				tableData[i][0] = sessions.get(i).courseID(); // courseID
-				tableData[i][1] = CoursesTable.getInstance().getData().get(sessions.get(i).courseID()).name();
-				tableData[i][2] = sessions.get(i).buildingName() + " " + Integer.toString(sessions.get(i).roomNumber());
-				tableData[i][3] = sessions.get(i).day() + " " + sessions.get(i).startTime().toString() + "-" + sessions.get(i).endTime().toString();
+				tableData[i][1] = CoursesTable.getInstance().getData().get(sessions.get(i).courseID()).name(); // course name
+				tableData[i][2] = sessions.get(i).buildingName() + " " + Integer.toString(sessions.get(i).roomNumber()); // building + room number
+				tableData[i][3] = sessions.get(i).day() + " " + sessions.get(i).startTime().toString() + "-" + sessions.get(i).endTime().toString(); // starttime - endtime
 				Employee instructor = EmployeesTable.getInstance().getData().get(sessions.get(i).instructorID());
-				tableData[i][4] = instructor.firstname() + " " + instructor.middlename() + " " + instructor.lastname();
+				tableData[i][4] = instructor.firstname() + " " + instructor.middlename() + " " + instructor.lastname(); // instructor full name 
 			}
 			scheduleByTermConverted.put(term, tableData);
 		}
 		return scheduleByTermConverted;
+	}
+	public boolean isSessionConflict(int studentID, int sessionID) // is the student already enrolled in the session
+	{
+		return StudentsTable.getInstance().getData().get(studentID).sessionsEnrolled().contains(sessionID);
+	}
+	public boolean isCourseConflict(int studentID, int courseID)	// did the student take this course before
+	{
+		ArrayList<Integer> sessionsEnrolled = StudentsTable.getInstance().getData().get(studentID).sessionsEnrolled();
+		ArrayList<Integer> coursesEnrolled = new ArrayList<>();
+		for(int id : sessionsEnrolled)
+			coursesEnrolled.add(SessionsTable.getInstance().getData().get(id).courseID());
+		return coursesEnrolled.contains(courseID);
+	}
+	public boolean isPrereqFulfilled(int studentID, int courseID) // did the student fulfill prereq of this course
+	{
+		ArrayList<Integer> prereqs = CoursesTable.getInstance().getData().get(courseID).prereqs();
+		ArrayList<Integer> sessionsEnrolled = StudentsTable.getInstance().getData().get(studentID).sessionsEnrolled();
+		ArrayList<Integer> coursesEnrolled = new ArrayList<>();
+		for(int id : sessionsEnrolled)
+			coursesEnrolled.add(SessionsTable.getInstance().getData().get(id).courseID());
+		for(int prereq : prereqs)
+			if(!coursesEnrolled.contains(prereq))	// if student doesn't have any one of the prereqs, then not fullfilled
+				return false;
+		return true;
+	}
+	public boolean isTermConflict(int sessionID)	// check term against current term
+	{
+		SchoolModel sm = new SchoolModel();
+		int currentYear = sm.getCurrentYear();
+		int sessionYear = SessionsTable.getInstance().getData().get(sessionID).year();
+		String currentSem = sm.getCurrentSemester();
+		String sessionSem = SessionsTable.getInstance().getData().get(sessionID).semester();
+		if(sessionYear < currentYear)
+			return true;
+		else if(sessionYear > currentYear)
+			return false;
+		else
+		{															// case = 0: same semester, can add
+			if(sessionSem.compareToIgnoreCase(currentSem) <= 0)		// case < 0: fall(future session) vs spring(current) , can add, no conflict
+				return false;
+			return true;							// case > 0: spring(previos semester) vs fall(current semester), cannot add, conflict
+		}
+	}
+	public boolean isTimeConflict(int studentID, int sessionID, String term)	// check day time against sessions enrolled by student by term
+	{
+		
 	}
 }
