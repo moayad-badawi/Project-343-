@@ -1,13 +1,13 @@
-package controller.admin;
+package controller.admin.employee;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import view.AdminView;
 
-public class SuperAdminRemoveAdminController implements ActionListener  {
+public class AdminSetEmployeeController implements ActionListener  {
 	private AdminView view;
-	public SuperAdminRemoveAdminController(AdminView view) {
+	public AdminSetEmployeeController(AdminView view) {
 		this.view = view;
 	}
 	

@@ -19,6 +19,9 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EmptyBorder;
 
 import controller.LoginController;
+import controller.admin.employee.AdminAddEmployeeSessionController;
+import controller.student.StudentAddClassController;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -63,12 +66,14 @@ public class AdminView extends JFrame{
 	public JPanel adminListPane;
 	public JScrollPane adminScrollPanel;
 	
-	/*########### Employee Tab: ###########*/
+/*########### Employee Tab: ###########*/
 	public JPanel employeeContentPane;
 	public JTabbedPane adminTabbedPane;
 	/****Profile****/
 	public JPanel adminProfile;	
 		/****Employee****/
+	public JRadioButton radioButton;
+	public JRadioButton radioButton_1;
 	public JPanel employeInfo;
 	public JLabel empNameLB;
 	public JLabel empIDLB;
@@ -106,7 +111,7 @@ public class AdminView extends JFrame{
 	public JPanel empSchedulePane;
 	public JScrollPane empUnassignScrollPanel;
 
-	/*########### Student Tab: ###########*/
+/*########### Student Tab: ###########*/
 	public JPanel studentTab;
 		/****Student****/
 	public JPanel stdInfo;
@@ -131,7 +136,7 @@ public class AdminView extends JFrame{
 	public JPanel stdList;
 	public JScrollPane stdScrollPanel; 
 	
-	/*########### College Tab: ###########*/
+/*########### College Tab: ###########*/
 	public JPanel collegeTab;
 		/****College****/
 	public JPanel collegeInfo;
@@ -152,7 +157,7 @@ public class AdminView extends JFrame{
 	public JPanel collegeList;
 	public JScrollPane collegeScrollPanel;
 	
-	/*########### Department Tab: ###########*/
+/*########### Department Tab: ###########*/
 	public JPanel departmentTab;
 		/****Department****/
 	public JPanel dpInfo;
@@ -174,7 +179,7 @@ public class AdminView extends JFrame{
 	public JPanel dpList;
 	public JScrollPane departmentScrollPanel;
 
-	/*########### Major Tab: ###########*/
+/*########### Major Tab: ###########*/
 	public JPanel majorTab;
 		/****Major****/
 	public JPanel majorInfo;
@@ -257,6 +262,8 @@ public class AdminView extends JFrame{
 	
 	/*########### Call Controller: ###########*/
 		//School
+	public void addAddEmployeeSessionController( AdminAddEmployeeSessionController controller ) { empAssignButton.addActionListener(controller);}
+
 		//Admin
 		//Employee
 		//Student
@@ -576,7 +583,7 @@ public class AdminView extends JFrame{
 		employeInfo.add(empProfileIDField);
 		
 		empProfileSaveBtn = new JButton("Save");
-		empProfileSaveBtn.setBounds(120, 142, 71, 23);
+		empProfileSaveBtn.setBounds(133, 144, 71, 23);
 		employeInfo.add(empProfileSaveBtn);
 		
 		empProfileMiddleNameField = new JTextField();
@@ -598,6 +605,15 @@ public class AdminView extends JFrame{
 		emp = new JLabel("Last :");
 		emp.setBounds(16, 88, 32, 14);
 		employeInfo.add(emp);
+		
+		radioButton = new JRadioButton("Add");
+		radioButton.setSelected(true);
+		radioButton.setBounds(6, 142, 57, 23);
+		employeInfo.add(radioButton);
+		
+		radioButton_1 = new JRadioButton("Edit");
+		radioButton_1.setBounds(73, 142, 57, 23);
+		employeInfo.add(radioButton_1);
 		
 		removeEmployee = new JPanel();
 		removeEmployee.setLayout(null);

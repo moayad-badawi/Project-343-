@@ -1,7 +1,7 @@
 package controller;
 
-import controller.admin.SuperAdminSetSchoolInfoController;
 import controller.admin.AdminViewController;
+import controller.admin.school.SuperAdminSetSchoolInfoController;
 import datatypes.Admin;
 import model.AdminModel;
 import model.EmployeeModel;

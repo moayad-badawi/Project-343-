@@ -1,13 +1,13 @@
-package controller.admin;
+package controller.admin.employee;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import view.AdminView;
 
-public class SuperAdminSetAdminInfoController implements ActionListener  {
+public class AdminAddEmployeeSessionController implements ActionListener  {
 	private AdminView view;
-	public SuperAdminSetAdminInfoController(AdminView view) {
+	public AdminAddEmployeeSessionController(AdminView view) {
 		this.view = view;
 	}
 	
