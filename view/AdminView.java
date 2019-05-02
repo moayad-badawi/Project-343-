@@ -277,7 +277,10 @@ public class AdminView extends JFrame{
 		});
 		
 	//School
-		
+		schoolSaveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 	//Admin
 		
 	//Employee
@@ -420,6 +423,7 @@ public class AdminView extends JFrame{
 		schoolTab.add(schoolCurrentTermField);
 		
 		schoolSaveButton = new JButton("Save");
+	
 		schoolSaveButton.setBounds(376, 364, 117, 29);
 		schoolTab.add(schoolSaveButton);
 	}

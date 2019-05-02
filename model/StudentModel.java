@@ -116,12 +116,12 @@ public class StudentModel
 			return true;							// case > 0: spring(previous semester) vs fall(current semester), cannot add, conflict
 		}
 	}
-	public boolean isTimeConflict(int studentID, int sessionID, String term)	// check day time against sessions enrolled by student by term
-	{
-		
-	}
-	public boolean isRoomConflict(int studentID, int sessionID, String term)		// check building and room against sessions enrolled by student by term
-	{
-		
-	}
+//	public boolean isTimeConflict(int studentID, int sessionID, String term)	// check day time against sessions enrolled by student by term
+//	{
+//		
+//	}
+//	public boolean isRoomConflict(int studentID, int sessionID, String term)		// check building and room against sessions enrolled by student by term
+//	{
+//		
+//	}
 }
