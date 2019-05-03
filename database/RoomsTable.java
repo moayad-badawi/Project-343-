@@ -8,9 +8,11 @@ public class RoomsTable
 {
 	private static RoomsTable uniqueInstance;
 	private TreeMap<Integer, Room> rooms;
+	private static int id;
 	private RoomsTable()
 	{
 		rooms = new TreeMap<>();
+		id = 0;
 	}
 	public static RoomsTable getInstance()
 	{
@@ -24,6 +26,7 @@ public class RoomsTable
 		}
 		return uniqueInstance;
 	}
+	public int getID() { return id++; }
 	public TreeMap<Integer, Room> getData()
 	{
 		return rooms;
