@@ -162,7 +162,6 @@ public class AdminModel
 	}
 	public String addSessionCheck(Session session)
 	{
-		String msg = "";
 		ArrayList<Session> termSessions = new ArrayList<>();
 		TreeMap<Integer, Session> st = SessionsTable.getInstance().getData();
 		for(int i = 0; i < st.size(); i++)		// all sessions in that term
@@ -172,9 +171,17 @@ public class AdminModel
 			if(term.equals(session.semester() + " " + Integer.toString(session.year())))
 					termSessions.add(s);
 		}
-		for(Session s : termSessions)
+		for(Session s : termSessions)	// check session info conflict against sessions in the same term
 		{
-			
+			if(session.day().equals(s.day()))	// same day, check time, room, instructor conflict
+			{
+				if(session.startTime().isBefore(s.endTime()) || session.endTime().isAfter(s.startTime())) // time conflict
+					return "Time conflict";
+				else	// no time conflict, check room
+				{
+					
+				}
+			}
 		}
 	}
 }
