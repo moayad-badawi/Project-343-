@@ -93,7 +93,7 @@ public class SchoolModel
 			{
 				tableData[i][0] = sessions.get(i).courseID(); // courseID
 				tableData[i][1] = CoursesTable.getInstance().getData().get(sessions.get(i).courseID()).name();
-				tableData[i][2] = sessions.get(i).buildingName() + " " + Integer.toString(sessions.get(i).roomNumber());
+				tableData[i][2] = sessions.get(i).buildingName() + " " + Integer.toString(sessions.get(i).roomID());
 				tableData[i][3] = sessions.get(i).day() + " " + sessions.get(i).startTime().toString() + "-" + sessions.get(i).endTime().toString();
 				Employee instructor = EmployeesTable.getInstance().getData().get(sessions.get(i).instructorID());
 				tableData[i][4] = instructor.firstname() + " " + instructor.middlename() + " " + instructor.lastname();

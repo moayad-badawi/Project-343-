@@ -88,6 +88,7 @@ public class Preload
 		StudentsTable.getInstance().getData().put(student.id(), student);
 		// building
 		Room room = new Room(0, 30, "VEC");			// room 0
+		RoomsTable.getInstance().getData().put(room.id(), room);
 		//ArrayList<Room> rooms = new ArrayList<>();
 		//rooms.add(room);
 		//Building building = new Building("VEC", rooms);
