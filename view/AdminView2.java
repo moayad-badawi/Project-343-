@@ -19,8 +19,6 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EmptyBorder;
 
 import controller.LoginController;
-import controller.admin.admin.SuperAdminRemoveAdminController;
-import controller.admin.admin.SuperAdminSetAdminController;
 import controller.admin.employee.AdminAddEmployeeSessionController;
 import controller.admin.school.SuperAdminSetSchoolController;
 import controller.student.StudentAddClassController;
@@ -29,7 +27,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.TableModel;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -40,7 +37,7 @@ import javax.swing.JTable;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class AdminView extends JFrame{
+public class AdminView2 extends JFrame{
 	
 	private JPanel 		contentPane;
 	private JTabbedPane tabbedPane;
@@ -256,7 +253,7 @@ public class AdminView extends JFrame{
 	
 	/*########### Session Tab: ###########*/
 	
-	public AdminView() {
+	public AdminView2() {
 		//initDate();
 		initComponents();
 		createEvents();
@@ -270,12 +267,11 @@ public class AdminView extends JFrame{
 	
 	/*########### Call Controller: ###########*/
 		//School
-	public void addSetSchoolInfoController		( SuperAdminSetSchoolController controller ) 	{ schoolSaveButton.addActionListener(controller); } 
+	public void addSetSchoolInfoController		( SuperAdminSetSchoolController controller ) { schoolSaveButton.addActionListener(controller); } 
 		//Admin
-	public void addSetAdminController			( SuperAdminSetAdminController controller ) 		{ adminSaveButton.addActionListener(controller);}
-	public void addRemoveAdminController 		( SuperAdminRemoveAdminController controller ) 		{ adminRemoveButton.addActionListener(controller);}
+	
 		//Employee
-	public void addAddEmployeeSessionController	( AdminAddEmployeeSessionController controller ) 	{ empAssignButton.addActionListener(controller); }
+	public void addAddEmployeeSessionController	( AdminAddEmployeeSessionController controller ) { empAssignButton.addActionListener(controller); }
 
 		//Student
 		//College
@@ -301,30 +297,7 @@ public class AdminView extends JFrame{
 		adListTable.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				adminEditRadioButton.setSelected(true);
 				
-				TableModel tModel = adListTable.getModel();
-				int i = adListTable.getSelectedRow();
-				adminIDField.setText		(tModel.getValueAt(i, 0).toString());
-				adminFirstNameField.setText	(tModel.getValueAt(i, 1).toString());
-				adminMiddleNameField.setText(tModel.getValueAt(i, 2).toString());
-				adminLastNamefield.setText	(tModel.getValueAt(i, 3).toString());
-
-			}
-		});
-		// Add Option Selected
-		adminAddRadioButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				adListTable.getSelectionModel().clearSelection();
-				adminIDField.setText		("");
-				adminFirstNameField.setText	("");
-				adminMiddleNameField.setText("");
-				adminLastNamefield.setText	("");
-			}
-		});
-		// Edit Option Selected
-		adminEditRadioButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
 			}
 		});
 	//Employee
@@ -492,6 +465,7 @@ public class AdminView extends JFrame{
 		
 		adminFirstNameField = new JTextField();
 		adminFirstNameField.setBounds(64, 27, 127, 20);
+		adminFirstNameField.setEditable(false);
 		adminFirstNameField.setColumns(10);
 		
 		adminIDField = new JTextField();
@@ -510,12 +484,10 @@ public class AdminView extends JFrame{
 		adminInfo.add(adminSaveButton);
 		
 		adminAddRadioButton = new JRadioButton("Add");
-
 		adminAddRadioButton.setBounds(6, 141, 57, 23);
 		adminInfo.add(adminAddRadioButton);
 		
 		adminEditRadioButton = new JRadioButton("Edit");
-
 		adminEditRadioButton.setBounds(73, 141, 57, 23);
 		adminInfo.add(adminEditRadioButton);
 		
@@ -534,11 +506,13 @@ public class AdminView extends JFrame{
 		adminInfo.add(lblLast);
 		
 		adminMiddleNameField = new JTextField();
+		adminMiddleNameField.setEditable(false);
 		adminMiddleNameField.setColumns(10);
 		adminMiddleNameField.setBounds(64, 59, 127, 20);
 		adminInfo.add(adminMiddleNameField);
 		
 		adminLastNamefield = new JTextField();
+		adminLastNamefield.setEditable(false);
 		adminLastNamefield.setColumns(10);
 		adminLastNamefield.setBounds(64, 84, 127, 20);
 		adminInfo.add(adminLastNamefield);
@@ -1322,7 +1296,7 @@ public class AdminView extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AdminView frame = new AdminView();
+					AdminView2 frame = new AdminView2();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
