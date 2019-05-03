@@ -9,9 +9,9 @@ public class Employee
 	private String middlename;
 	private String lastname;
 	private String title;
-	private int salary;
+	private float salary;
 	private ArrayList<Integer> sessionsTeaching;
-	public Employee(int id, String firstname, String middlename, String lastname, String title, int salary, ArrayList<Integer> sessionsTeaching)
+	public Employee(int id, String firstname, String middlename, String lastname, String title, float salary, ArrayList<Integer> sessionsTeaching)
 	{
 		this.id = id;
 		this.firstname = firstname;
@@ -25,13 +25,13 @@ public class Employee
 	public void setMiddlename(String middlename) { this.middlename = middlename; }
 	public void setLastname(String lastname) { this.lastname = lastname; }
 	public void setTitle(String title) { this.title = title; }
-	public void setSalary(int salary) { this.salary = salary; }
+	public void setSalary(float salary) { this.salary = salary; }
 	public void setSessionsTeaching(ArrayList<Integer> sessionsTeaching) { this.sessionsTeaching = sessionsTeaching; }
 	public int id() { return id; }
 	public String firstname() { return firstname; }
 	public String middlename() { return middlename; }
 	public String lastname() { return lastname; }
 	public String title() { return title; }
-	public int salary() { return salary; }
+	public float salary() { return salary; }
 	public ArrayList<Integer> sessionsTeaching() { return sessionsTeaching; }
 }
