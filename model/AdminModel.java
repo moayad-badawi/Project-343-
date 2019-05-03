@@ -3,10 +3,27 @@ package model;
 import datatypes.*;
 import database.*;
 import java.util.TreeMap;
+import java.util.ArrayList;
 
 public class AdminModel
 {
 	public AdminModel() {}
+	public int generateUserID()
+	{
+		return UsersTable.getInstance().getID();
+	}
+	public int generateCourseID()
+	{
+		return CoursesTable.getInstance().getID();
+	}
+	public int generateSessionID()
+	{
+		return SessionsTable.getInstance().getID();
+	}
+	public int generateRoomID()
+	{
+		return RoomsTable.getInstance().getID();
+	}
 	public void addBuilding(Building building)
 	{
 		BuildingsTable.getInstance().getData().put(building.name(), building);
@@ -19,6 +36,18 @@ public class AdminModel
 	{
 		removeBuilding(name);
 		addBuilding(building);
+	}
+	public void addRoom(Room room)
+	{
+		RoomsTable.getInstance().getData().put(room.id(), room);
+	}
+	public void removeRoom(int id)
+	{
+		RoomsTable.getInstance().getData().remove(id);
+	}
+	public void updateRoom(int id, Room room)
+	{
+		RoomsTable.getInstance().getData().replace(id, room);
 	}
 	public void addCollege(College college)
 	{
@@ -115,7 +144,7 @@ public class AdminModel
 	{
 		StudentsTable.getInstance().getData().remove(id);
 	}
-	/*public void updateStudentAccount(int id, Student student)
+	public void updateStudentAccount(int id, Student student)
 	{
 		StudentsTable.getInstance().getData().replace(id, student);
 	}
@@ -130,6 +159,29 @@ public class AdminModel
 	public TreeMap<Integer, Student> getStudentAccounts()
 	{
 		return StudentsTable.getInstance().getData();
-	}*/
-//	public TreeMap
+	}
+	public String addSessionCheck(Session session)
+	{
+		ArrayList<Session> termSessions = new ArrayList<>();
+		TreeMap<Integer, Session> st = SessionsTable.getInstance().getData();
+		for(int i = 0; i < st.size(); i++)		// all sessions in that term
+		{
+			Session s = st.get(i);
+			String term = s.semester() + " " + Integer.toString(s.year());
+			if(term.equals(session.semester() + " " + Integer.toString(session.year())))
+					termSessions.add(s);
+		}
+		for(Session s : termSessions)	// check session info conflict against sessions in the same term
+		{
+			if(session.day().equals(s.day()))	// same day, check time, room, instructor conflict
+			{
+				if(session.startTime().isBefore(s.endTime()) || session.endTime().isAfter(s.startTime())) // time conflict
+					return "Time conflict";
+				else	// no time conflict, check room
+				{
+					
+				}
+			}
+		}
+	}
 }
