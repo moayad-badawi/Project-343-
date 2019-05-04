@@ -13,6 +13,10 @@ public class SchoolModel
 	{
 		return UniversityInformationTable.getInstance().getData(); 
 	}
+	public String getUniversityName()
+	{
+		return UniversityInformationTable.getInstance().getData().name();
+	}
 	public TreeMap<String, Building> getBuildings()
 	{
 		return BuildingsTable.getInstance().getData();
