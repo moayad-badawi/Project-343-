@@ -199,5 +199,66 @@ public class AdminModel
 			}
 		}
 	}*/
-	
+	public Object[][] getAllEmployeesConverted()
+	{
+		TreeMap<Integer, Employee> employees = EmployeesTable.getInstance().getData();
+		Object[][] tableData = new Object[employees.size()][4];
+		for(int i = 0; i < employees.size(); i++)
+		{
+			tableData[i][0] = employees.get(i).id();
+			tableData[i][1] = employees.get(i).firstname();
+			tableData[i][2] = employees.get(i).middlename();
+			tableData[i][3] = employees.get(i).lastname();
+		}
+		return tableData;
+	}
+	public Object[][] getAllSessionsConverted()
+	{
+		TreeMap<Integer, Session> sessions = SessionsTable.getInstance().getData();
+		Object[][] tableData = new Object[sessions.size()][6];
+		for(int i = 0; i < sessions.size(); i++)
+		{
+			tableData[i][0] = sessions.get(i).id();
+			tableData[i][1] = CoursesTable.getInstance().getData().get(sessions.get(i).courseID()).name();
+			tableData[i][2] = sessions.get(i).day() + " " + sessions.get(i).startTime().toString() + "-" + sessions.get(i).endTime().toString();
+			tableData[i][3] = sessions.get(i).buildingName() + " " + Integer.toString(sessions.get(i).roomNumber());
+			int instructorID = sessions.get(i).instructorID();
+			if(instructorID == -1)
+				tableData[i][4] = "N/A";
+			else
+				tableData[i][4] = EmployeesTable.getInstance().getData().get(instructorID).firstname() + " " +
+									EmployeesTable.getInstance().getData().get(instructorID).middlename() + " " +
+									EmployeesTable.getInstance().getData().get(instructorID).lastname();
+			tableData[i][5] = sessions.get(i).semester() + " " + Integer.toString(sessions.get(i).year());
+		}
+		return tableData;
+	}
+	public Object[][] getAllStudentsConverted()
+	{
+		TreeMap<Integer, Student> students = StudentsTable.getInstance().getData();
+		Object[][] tableData = new Object[students.size()][5];
+		for(int i = 0; i < students.size(); i++)
+		{
+			tableData[i][0] = students.get(i).id();
+			tableData[i][1] = students.get(i).firstname();
+			tableData[i][2] = students.get(i).middlename();
+			tableData[i][3] = students.get(i).lastname();
+			tableData[i][4] = students.get(i).tuitionStatus();
+		}
+		return tableData;
+	}
+	public Object[][] getEmployeeSessionsByID(int instructorID)
+	{
+		ArrayList<Integer> sessionsTeaching = EmployeesTable.getInstance().getData().get(instructorID).sessionsTeaching();
+		Object[][] tableData = new Object[sessionsTeaching.size()][4];
+		for(int i = 0; i < sessionsTeaching.size(); i++)
+		{
+			Session session = SessionsTable.getInstance().getData().get(sessionsTeaching.get(i));
+			tableData[i][0] = sessionsTeaching.get(i);
+			tableData[i][1] = CoursesTable.getInstance().getData().get(session.courseID()).name();
+			tableData[i][2] = session.day() + " " + session.startTime().toString() + "-" + session.endTime().toString();
+			tableData[i][3] = session.buildingName() + " " + session.roomNumber();
+		}
+		return tableData;
+	}
 }
