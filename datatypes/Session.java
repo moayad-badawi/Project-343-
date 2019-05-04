@@ -15,9 +15,9 @@ public class Session
 	private String day;				// MW or TTh
 	private String buildingName;
 	private int roomID; // change this to roomID
-	private int occupancyLimit;
+	private int enrollmentLimit;
 	private ArrayList<Integer> roster; // id of students enrolled
-	public Session(final int id, int cid, int instructorID, LocalTime startTime, LocalTime endTime, String semester, int year, String day, String buildingName, int roomID, int occupancyLimit, ArrayList<Integer> roster)
+	public Session(final int id, int cid, int instructorID, LocalTime startTime, LocalTime endTime, String semester, int year, String day, String buildingName, int roomID, int enrollmentLimit, ArrayList<Integer> roster)
 	{
 		this.id = id;
 		this.courseID = cid;
@@ -29,7 +29,7 @@ public class Session
 		this.day = day;
 		this.buildingName = buildingName;
 		this.roomID = roomID;
-		this.occupancyLimit = occupancyLimit;
+		this.enrollmentLimit = enrollmentLimit;
 		this.roster = roster;
 	}
 	public void setCourseID(int courseID) { this.courseID = courseID; }
@@ -41,7 +41,7 @@ public class Session
 	public void setDay(String day) { this.day = day; }
 	public void setBuildingName(String buildingName) { this.buildingName = buildingName; }
 	public void setRoomID(int roomID) { this.roomID = roomID; }
-	public void setOccupancyLimit(int occupancyLimit) { this.occupancyLimit = occupancyLimit; }
+	public void setEnrollmentLimit(int enrollmentLimit) { this.enrollmentLimit = enrollmentLimit; }
 	public void setRoster(ArrayList<Integer> roster) { this.roster = roster; }
 	public final int id() { return id; }
 	public int courseID() { return courseID; }
@@ -53,6 +53,6 @@ public class Session
 	public String day() { return day; }
 	public String buildingName() { return buildingName; }
 	public int roomID() { return roomID; }
-	public int occupancyLimit() { return occupancyLimit; }
+	public int enrollmentLimit() { return enrollmentLimit; }
 	public ArrayList<Integer> roster() { return roster; }
 }
