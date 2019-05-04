@@ -261,4 +261,19 @@ public class AdminModel
 		}
 		return tableData;
 	}
+	public ArrayList<String> getCollegeNames()
+	{
+		ArrayList<String> collegeNames = new ArrayList<>();
+		for(String name : CollegesTable.getInstance().getData().keySet())
+			collegeNames.add(name);
+		return collegeNames;
+	}
+	public int getCollegeDeanID(String collegeName)
+	{
+		return CollegesTable.getInstance().getData().get(collegeName).deanID();
+	}
+	public void setCollegeDean(String collegeName, int employeeID)
+	{
+		CollegesTable.getInstance().getData().get(collegeName).setDeanID(employeeID);
+	}
 }
