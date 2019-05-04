@@ -6,17 +6,17 @@ public class Student
 {
 	private final int id;
 	private String firstname;
-	private char middleInitial;
+	private String middlename;
 	private String lastname;
 	private String major;
 	private String tuitionStatus;
 	private ArrayList<Integer> sessionsEnrolled;
 	private int currentUnit;
-	public Student(final int id, String firstname, char middleInitial, String lastname, String major, String tuitionStatus, ArrayList<Integer> sessionsEnrolled, int currentUnit)
+	public Student(final int id, String firstname, String middlename, String lastname, String major, String tuitionStatus, ArrayList<Integer> sessionsEnrolled, int currentUnit)
 	{
 		this.id = id;
 		this.firstname = firstname;
-		this.middleInitial = middleInitial;
+		this.middlename = middlename;
 		this.lastname = lastname;
 		this.major = major;
 		this.tuitionStatus = tuitionStatus;
@@ -24,7 +24,7 @@ public class Student
 		this.currentUnit = currentUnit;
 	}
 	public void setFirstname(String firstname) { this.firstname = firstname; }
-	public void setMiddleInitial(char middleInitial) { this.middleInitial = middleInitial; }
+	public void setMiddlename(String middlename) { this.middlename = middlename; }
 	public void setLastname(String lastname) { this.lastname = lastname; }
 	public void setMajor(String major) { this.major = major; }
 	public void setTuitionStatus(String tuitionStatus) { this.tuitionStatus = tuitionStatus; }
@@ -32,7 +32,7 @@ public class Student
 	public void setCurrentUnit(int currentUnit) { this.currentUnit = currentUnit; }
 	public final int id() { return id; }
 	public String firstname() { return firstname; }
-	public char middleInitial() { return middleInitial; }
+	public String middlename() { return middlename; }
 	public String lastname() { return lastname; }
 	public String major() { return major; }
 	public String tuitionStatus() { return tuitionStatus; }
