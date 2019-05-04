@@ -12,7 +12,7 @@ public class SuperAdminModel extends AdminModel
 	{
 		super();
 	}
-	public void updateUniversityName(String name)
+	public void setUniversityName(String name)
 	{
 		UniversityInformationTable.getInstance().getData().setName(name);
 	}
