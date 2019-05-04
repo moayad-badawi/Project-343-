@@ -1,6 +1,7 @@
 package database;
 
 import datatypes.University;
+import java.util.ArrayList;
 
 public class UniversityInformationTable
 {
@@ -26,5 +27,15 @@ public class UniversityInformationTable
 	public University getData()
 	{
 		return univ;
+	}
+	public final ArrayList<Character> getLetterGrades()
+	{
+		ArrayList<Character> letterGrades = new ArrayList<>();
+		letterGrades.add('A');
+		letterGrades.add('B');
+		letterGrades.add('C');
+		letterGrades.add('D');
+		letterGrades.add('F');
+		return letterGrades;
 	}
 }
