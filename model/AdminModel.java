@@ -32,7 +32,7 @@ public class AdminModel
 	{
 		return UniversityInformationTable.getInstance().getData().name();
 	}
-	public void updateUniversityName(String name)
+	public void setUniversityName(String name)
 	{
 		UniversityInformationTable.getInstance().getData().setName(name);
 	}
@@ -44,7 +44,7 @@ public class AdminModel
 	{
 		BuildingsTable.getInstance().getData().remove(name);
 	}
-	public void updateBuilding(String name, Building building)
+	public void setBuilding(String name, Building building)
 	{
 		BuildingsTable.getInstance().getData().replace(name, building);
 	}
@@ -56,7 +56,7 @@ public class AdminModel
 	{
 		RoomsTable.getInstance().getData().remove(id);
 	}
-	public void updateRoom(Room room)
+	public void setRoom(Room room)
 	{
 		RoomsTable.getInstance().getData().replace(room.id(), room);
 	}
@@ -68,7 +68,7 @@ public class AdminModel
 	{
 		CollegesTable.getInstance().getData().remove(name);
 	}
-	public void updateCollege(String name, College college)
+	public void setCollege(String name, College college)
 	{
 		CollegesTable.getInstance().getData().replace(name, college);
 	}
@@ -80,7 +80,7 @@ public class AdminModel
 	{
 		DepartmentsTable.getInstance().getData().remove(name);
 	}
-	public void updateDepartment(String name, Department dept)
+	public void setDepartment(String name, Department dept)
 	{
 		DepartmentsTable.getInstance().getData().replace(name, dept);
 	}
@@ -92,7 +92,7 @@ public class AdminModel
 	{
 		MajorsTable.getInstance().getData().remove(name);
 	}
-	public void updateMajor(String name, Major major)
+	public void setMajor(String name, Major major)
 	{
 		MajorsTable.getInstance().getData().replace(name, major);
 	}
@@ -104,7 +104,7 @@ public class AdminModel
 	{
 		CoursesTable.getInstance().getData().remove(id);
 	}
-	public void updateCourse(Course course)
+	public void setCourse(Course course)
 	{
 		CoursesTable.getInstance().getData().replace(course.id(), course);
 	}
@@ -116,7 +116,7 @@ public class AdminModel
 	{
 		SessionsTable.getInstance().getData().remove(id);
 	}
-	public void updateSession(Session session)
+	public void setSession(Session session)
 	{
 		SessionsTable.getInstance().getData().replace(session.id(), session);
 	}
@@ -128,39 +128,41 @@ public class AdminModel
 	{
 		UsersTable.getInstance().getData().remove(id);
 	}
-	public void updateUserAccount(User user)
+	public void setUserAccount(User user)
 	{
 		UsersTable.getInstance().getData().replace(user.id(), user);
 	}
-	public void addEmployeeAccount(Employee employee, String password)
+	public int addEmployeeAccount(Employee employee, String password)
 	{
 		int id = generateUserID();
 		User user = new User(id, password, "Employee");
 		employee.setID(id);
 		UsersTable.getInstance().getData().put(id, user);
 		EmployeesTable.getInstance().getData().put(id, employee);
+		return id;
 	}
 	public void removeEmployeeAccount(int id)
 	{
 		EmployeesTable.getInstance().getData().remove(id);
 	}
-	public void updateEmployeeAccount(Employee employee)
+	public void setEmployeeAccount(Employee employee)
 	{
 		EmployeesTable.getInstance().getData().replace(employee.id(), employee);
 	}
-	public void addStudentAccount(Student student, String password)
+	public int addStudentAccount(Student student, String password)
 	{
 		int id = generateUserID();
 		User user = new User(id, password, "Student");
 		student.setID(id);
 		UsersTable.getInstance().getData().put(id, user);
 		StudentsTable.getInstance().getData().put(id, student);
+		return id;
 	}
 	public void removeStudentAccount(int id)
 	{
 		StudentsTable.getInstance().getData().remove(id);
 	}
-	public void updateStudentAccount(Student student)
+	public void setStudentAccount(Student student)
 	{
 		StudentsTable.getInstance().getData().replace(student.id(), student);
 	}

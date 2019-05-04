@@ -12,19 +12,20 @@ public class SuperAdminModel extends AdminModel
 	{
 		super();
 	}
-	public void addAdminAccount(Admin admin, String password)
+	public int addAdminAccount(Admin admin, String password)
 	{
 		int id = generateUserID();
 		User user = new User(id, password, "Admin");
 		admin.setID(id);
 		UsersTable.getInstance().getData().put(id, user);
 		AdminsTable.getInstance().getData().put(id, admin);
+		return id;
 	}
 	public void removeAdminAccount(int id)
 	{
 		AdminsTable.getInstance().getData().remove(id);
 	}
-	public void updateAdminAccount(Admin admin)
+	public void setAdminAccount(Admin admin)
 	{
 		AdminsTable.getInstance().getData().replace(admin.id(), admin);
 	}
@@ -36,6 +37,7 @@ public class SuperAdminModel extends AdminModel
 	{
 		TreeMap<Integer, Admin> admins = getAllAdmins();
 		Object[][] tableData = new Object[admins.size() - 1][4];
+		//System.out.println(admins.size());
 		for(int i = 1; i < admins.size(); i++)
 		{
 			tableData[i-1][0] = admins.get(i).id();
