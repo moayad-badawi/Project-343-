@@ -28,6 +28,10 @@ public class AdminModel
 	{
 		return UniversityInformationTable.getInstance().getData().name();
 	}
+	public void setUniversityName(String name)
+	{
+		UniversityInformationTable.getInstance().getData().setName(name);
+	}
 	public void addBuilding(Building building)
 	{
 		BuildingsTable.getInstance().getData().put(building.name(), building);
