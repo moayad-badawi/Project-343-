@@ -24,8 +24,7 @@ public class SuperAdminModel extends AdminModel
 	}
 	public void updateAdmin(int id, Admin admin)
 	{
-		removeAdmin(id);
-		addAdmin(admin);
+		AdminsTable.getInstance().getData().replace(id, admin);
 	}
 	public TreeMap<Integer, Admin> getAllAdmins()
 	{

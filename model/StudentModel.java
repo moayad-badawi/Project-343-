@@ -64,11 +64,11 @@ public class StudentModel
 			for(int i = 0; i < sessions.size(); i++)
 			{
 				tableData[i][0] = sessions.get(i).courseID(); // courseID
-				tableData[i][1] = CoursesTable.getInstance().getData().get(sessions.get(i).courseID()).name(); // course name
-				tableData[i][2] = sessions.get(i).buildingName() + " " + Integer.toString(sessions.get(i).roomID()); // building + room number
+				tableData[i][1] = CoursesTable.getInstance().getData().get(tableData[i][0]).name(); // course name
+				tableData[i][2] = sessions.get(i).buildingName() + " " + Integer.toString(sessions.get(i).roomNumber()); // building + room number
 				tableData[i][3] = sessions.get(i).day() + " " + sessions.get(i).startTime().toString() + "-" + sessions.get(i).endTime().toString(); // starttime - endtime
 				Employee instructor = EmployeesTable.getInstance().getData().get(sessions.get(i).instructorID());
-				tableData[i][4] = instructor.firstname() + " " + instructor.middlename() + " " + instructor.lastname(); // instructor full name 
+				tableData[i][4] = instructor.firstname() + " " + instructor.middleInitial() + " " + instructor.lastname(); // instructor full name 
 			}
 			scheduleByTermConverted.put(term, tableData);
 		}

@@ -160,6 +160,17 @@ public class AdminModel
 	{
 		return StudentsTable.getInstance().getData();
 	}
+	public void resetStudentSemesterUnits()
+	{
+		TreeMap<Integer, Student> allStudents = StudentsTable.getInstance().getData();
+		for(int i = 0; i < allStudents.size(); i++)
+			allStudents.get(i).setCurrentUnit(0);
+	}
+	public void assignStudentGrade(final int studentID, final int courseID, final char grade)
+	{
+		int[] key = {studentID, courseID};
+		GradesTable.getInstance().getData().put(key, grade);
+	}
 	public String addSessionCheck(Session session)
 	{
 		ArrayList<Session> termSessions = new ArrayList<>();
