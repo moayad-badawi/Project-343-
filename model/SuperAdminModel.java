@@ -20,9 +20,9 @@ public class SuperAdminModel extends AdminModel
 	{
 		AdminsTable.getInstance().getData().remove(id);
 	}
-	public void updateAdmin(int id, Admin admin)
+	public void updateAdmin(Admin admin)
 	{
-		AdminsTable.getInstance().getData().replace(id, admin);
+		AdminsTable.getInstance().getData().replace(admin.id(), admin);
 	}
 	public TreeMap<Integer, Admin> getAllAdmins()
 	{
