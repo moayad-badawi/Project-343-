@@ -128,9 +128,13 @@ public class AdminModel
 	{
 		UsersTable.getInstance().getData().replace(user.id(), user);
 	}
-	public void addEmployeeAccount(Employee employee)
+	public void addEmployeeAccount(Employee employee, String password)
 	{
-		EmployeesTable.getInstance().getData().put(employee.id(), employee);
+		int id = generateUserID();
+		User user = new User(id, password, "Employee");
+		employee.setID(id);
+		UsersTable.getInstance().getData().put(id, user);
+		EmployeesTable.getInstance().getData().put(id, employee);
 	}
 	public void removeEmployeeAccount(int id)
 	{
@@ -140,9 +144,13 @@ public class AdminModel
 	{
 		EmployeesTable.getInstance().getData().replace(employee.id(), employee);
 	}
-	public void addStudentAccount(Student student)
+	public void addStudentAccount(Student student, String password)
 	{
-		StudentsTable.getInstance().getData().put(student.id(), student);
+		int id = generateUserID();
+		User user = new User(id, password, "Student");
+		student.setID(id);
+		UsersTable.getInstance().getData().put(id, user);
+		StudentsTable.getInstance().getData().put(id, student);
 	}
 	public void removeStudentAccount(int id)
 	{

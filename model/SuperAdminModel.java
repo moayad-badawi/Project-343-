@@ -12,15 +12,19 @@ public class SuperAdminModel extends AdminModel
 	{
 		super();
 	}
-	public void addAdmin(Admin admin)
+	public void addAdminAccount(Admin admin, String password)
 	{
-		AdminsTable.getInstance().getData().put(admin.id(), admin);
+		int id = generateUserID();
+		User user = new User(id, password, "Admin");
+		admin.setID(id);
+		UsersTable.getInstance().getData().put(id, user);
+		AdminsTable.getInstance().getData().put(id, admin);
 	}
-	public void removeAdmin(int id)
+	public void removeAdminAccount(int id)
 	{
 		AdminsTable.getInstance().getData().remove(id);
 	}
-	public void updateAdmin(Admin admin)
+	public void updateAdminAccount(Admin admin)
 	{
 		AdminsTable.getInstance().getData().replace(admin.id(), admin);
 	}

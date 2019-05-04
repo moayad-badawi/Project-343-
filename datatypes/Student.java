@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Student
 {
-	private final int id;
+	private int id;
 	private String firstname;
 	private String middlename;
 	private String lastname;
@@ -12,7 +12,7 @@ public class Student
 	private String tuitionStatus;
 	private ArrayList<Integer> sessionsEnrolled;
 	private int currentUnit;
-	public Student(final int id, String firstname, String middlename, String lastname, String major, String tuitionStatus, ArrayList<Integer> sessionsEnrolled, int currentUnit)
+	public Student(int id, String firstname, String middlename, String lastname, String major, String tuitionStatus, ArrayList<Integer> sessionsEnrolled, int currentUnit)
 	{
 		this.id = id;
 		this.firstname = firstname;
@@ -23,6 +23,7 @@ public class Student
 		this.sessionsEnrolled = sessionsEnrolled;
 		this.currentUnit = currentUnit;
 	}
+	public void setID(int id) { this.id = id; }
 	public void setFirstname(String firstname) { this.firstname = firstname; }
 	public void setMiddlename(String middlename) { this.middlename = middlename; }
 	public void setLastname(String lastname) { this.lastname = lastname; }
@@ -30,7 +31,7 @@ public class Student
 	public void setTuitionStatus(String tuitionStatus) { this.tuitionStatus = tuitionStatus; }
 	public void setSessionsEnrolled(ArrayList<Integer> sessionsEnrolled) { this.sessionsEnrolled = sessionsEnrolled; }
 	public void setCurrentUnit(int currentUnit) { this.currentUnit = currentUnit; }
-	public final int id() { return id; }
+	public int id() { return id; }
 	public String firstname() { return firstname; }
 	public String middlename() { return middlename; }
 	public String lastname() { return lastname; }
