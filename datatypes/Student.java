@@ -6,30 +6,30 @@ public class Student
 {
 	private final int id;
 	private String firstname;
-	private String middlename;
+	private char middleInitial;
 	private String lastname;
 	private String major;
 	private String tuitionStatus;
 	private ArrayList<Integer> sessionsEnrolled;
-	public Student(int id, String firstname, String middlename, String lastname, String major, String tuitionStatus, ArrayList<Integer> sessionsEnrolled)
+	public Student(final int id, String firstname, char middleInitial, String lastname, String major, String tuitionStatus, ArrayList<Integer> sessionsEnrolled)
 	{
 		this.id = id;
 		this.firstname = firstname;
-		this.middlename = middlename;
+		this.middleInitial = middleInitial;
 		this.lastname = lastname;
 		this.major = major;
 		this.tuitionStatus = tuitionStatus;
 		this.sessionsEnrolled = sessionsEnrolled;
 	}
 	public void setFirstname(String firstname) { this.firstname = firstname; }
-	public void setMiddlename(String middlename) { this.middlename = middlename; }
+	public void setMiddleInitial(char middleInitial) { this.middleInitial = middleInitial; }
 	public void setLastname(String lastname) { this.lastname = lastname; }
 	public void setMajor(String major) { this.major = major; }
 	public void setTuitionStatus(String tuitionStatus) { this.tuitionStatus = tuitionStatus; }
 	public void setSessionsEnrolled(ArrayList<Integer> sessionsEnrolled) { this.sessionsEnrolled = sessionsEnrolled; }
-	public int id() { return id; }
+	public final int id() { return id; }
 	public String firstname() { return firstname; }
-	public String middlename() { return middlename; }
+	public char middleInitial() { return middleInitial; }
 	public String lastname() { return lastname; }
 	public String major() { return major; }
 	public String tuitionStatus() { return tuitionStatus; }

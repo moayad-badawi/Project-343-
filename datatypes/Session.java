@@ -5,7 +5,7 @@ import java.time.LocalTime;
 
 public class Session
 {
-	private int id;
+	private final int id;
 	private int courseID;
 	private int instructorID;
 	private LocalTime startTime;
@@ -17,7 +17,7 @@ public class Session
 	private int roomID; // change this to roomID
 	private int occupancyLimit;
 	private ArrayList<Integer> roster; // id of students enrolled
-	public Session(int id, int cid, int instructorID, LocalTime startTime, LocalTime endTime, String semester, int year, String day, String buildingName, int roomID, int occupancyLimit, ArrayList<Integer> roster)
+	public Session(final int id, int cid, int instructorID, LocalTime startTime, LocalTime endTime, String semester, int year, String day, String buildingName, int roomID, int occupancyLimit, ArrayList<Integer> roster)
 	{
 		this.id = id;
 		this.courseID = cid;
@@ -32,7 +32,6 @@ public class Session
 		this.occupancyLimit = occupancyLimit;
 		this.roster = roster;
 	}
-	public void setID(int id) { this.id = id; }
 	public void setCourseID(int courseID) { this.courseID = courseID; }
 	public void setInstructorID(int instructorID) { this.instructorID = instructorID; }
 	public void setStartTime(LocalTime startTime) { this.startTime = startTime; }
@@ -44,7 +43,7 @@ public class Session
 	public void setRoomID(int roomID) { this.roomID = roomID; }
 	public void setOccupancyLimit(int occupancyLimit) { this.occupancyLimit = occupancyLimit; }
 	public void setRoster(ArrayList<Integer> roster) { this.roster = roster; }
-	public int id() { return id; }
+	public final int id() { return id; }
 	public int courseID() { return courseID; }
 	public int instructorID() { return instructorID; }
 	public LocalTime startTime() { return startTime; }

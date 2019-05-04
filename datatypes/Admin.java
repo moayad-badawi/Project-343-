@@ -4,20 +4,20 @@ public class Admin
 {
 	private final int id;
 	private String firstname;
-	private String middlename;
+	private char middleInitial;
 	private String lastname;
-	public Admin(int id, String firstname, String middlename, String lastname)
+	public Admin(final int id, String firstname, char middleInitial, String lastname)
 	{
 		this.id = id;
 		this.firstname = firstname;
-		this.middlename = middlename;
+		this.middleInitial = middleInitial;
 		this.lastname = lastname;
 	}
 	public void setFirstname(String firstname) { this.firstname = firstname; }
-	public void setMiddlename(String middlename) { this.middlename = middlename; }
+	public void setMiddleInitial(char middleInitial) { this.middleInitial = middleInitial; }
 	public void setLastname(String lastname) { this.lastname = lastname; }
-	public int id() { return id; }
+	public final int id() { return id; }
 	public String firstname() { return firstname; }
-	public String middlename() { return middlename; }
+	public char middleInitial() { return middleInitial; }
 	public String lastname() { return lastname; }
 }

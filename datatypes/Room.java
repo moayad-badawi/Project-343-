@@ -1,20 +1,22 @@
 package datatypes;
-// change roomNumber to roomID
+
 public class Room
 {
-	private int id;
-	private int occupancyLimit;
+	private final int id;
+	private int roomNumber;
+	private final int occupancyLimit;
 	private String buildingName;
-	public Room(int id, int occupancyLimit, String buildingName)
+	public Room(final int id, int roomNumber, final int occupancyLimit, String buildingName)
 	{
 		this.id = id;
+		this.roomNumber = roomNumber;
 		this.occupancyLimit = occupancyLimit;
 		this.buildingName = buildingName;
 	}
-	public void setRoomID(int id) { this.id = id; }
-	public void setOccupancyLimit(int occupancyLimit) { this.occupancyLimit = occupancyLimit; }
+	public void setRoomNumber(int roomNumber) { this.roomNumber = roomNumber; }
 	public void setBuildingName(String buildingName) { this.buildingName = buildingName; }
-	public int id() { return id; }
-	public int occupancyLimit() { return occupancyLimit; }
+	public final int id() { return id; }
+	public int roomNumber() { return roomNumber; }
+	public final int occupancyLimit() { return occupancyLimit; }
 	public String buildingName() { return buildingName; }
 }
