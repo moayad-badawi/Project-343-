@@ -5,7 +5,7 @@ import java.util.TreeMap;
 public class GradesTable
 {
 	private static GradesTable uniqueInstance;
-	private TreeMap<int[], Character> grades;
+	private TreeMap<int[], Character> grades; // <[studentID, courseID], grade>
 	private GradesTable()
 	{
 		grades = new TreeMap<>();
