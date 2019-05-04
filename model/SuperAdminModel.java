@@ -12,21 +12,21 @@ public class SuperAdminModel extends AdminModel
 	{
 		super();
 	}
-	public void setUniversityName(String name)
+	public void addAdminAccount(Admin admin, String password)
 	{
-		UniversityInformationTable.getInstance().getData().setName(name);
+		int id = generateUserID();
+		User user = new User(id, password, "Admin");
+		admin.setID(id);
+		UsersTable.getInstance().getData().put(id, user);
+		AdminsTable.getInstance().getData().put(id, admin);
 	}
-	public void addAdmin(Admin admin)
-	{
-		AdminsTable.getInstance().getData().put(admin.id(), admin);
-	}
-	public void removeAdmin(int id)
+	public void removeAdminAccount(int id)
 	{
 		AdminsTable.getInstance().getData().remove(id);
 	}
-	public void updateAdmin(int id, Admin admin)
+	public void updateAdminAccount(Admin admin)
 	{
-		AdminsTable.getInstance().getData().replace(id, admin);
+		AdminsTable.getInstance().getData().replace(admin.id(), admin);
 	}
 	public TreeMap<Integer, Admin> getAllAdmins()
 	{
@@ -35,14 +35,13 @@ public class SuperAdminModel extends AdminModel
 	public Object[][] getAllAdminsConverted()
 	{
 		TreeMap<Integer, Admin> admins = getAllAdmins();
-		admins.remove(0);
-		Object[][] tableData = new Object[admins.size()][4];
-		for(int i = 0; i < admins.size(); i++)
+		Object[][] tableData = new Object[admins.size() - 1][4];
+		for(int i = 1; i < admins.size(); i++)
 		{
-			tableData[i][0] = admins.get(i).id();
-			tableData[i][1] = admins.get(i).firstname();
-			tableData[i][2] = admins.get(i).middlename().substring(0, 1);
-			tableData[i][3] = admins.get(i).lastname();
+			tableData[i-1][0] = admins.get(i).id();
+			tableData[i-1][1] = admins.get(i).firstname();
+			tableData[i-1][2] = admins.get(i).middlename().substring(0, 1);
+			tableData[i-1][3] = admins.get(i).lastname();
 		}
 		return tableData;
 	}
