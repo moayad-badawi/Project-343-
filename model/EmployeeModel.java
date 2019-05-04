@@ -53,8 +53,8 @@ public class EmployeeModel
 			for(int i = 0; i < sessions.size(); i++)
 			{
 				tableData[i][0] = sessions.get(i).courseID(); // courseID
-				tableData[i][1] = CoursesTable.getInstance().getData().get(sessions.get(i).courseID()).name();
-				tableData[i][2] = sessions.get(i).buildingName() + " " + Integer.toString(sessions.get(i).roomID());
+				tableData[i][1] = CoursesTable.getInstance().getData().get(tableData[i][0]).name();
+				tableData[i][2] = sessions.get(i).buildingName() + " " + Integer.toString(sessions.get(i).roomNumber());
 				tableData[i][3] = sessions.get(i).day() + " " + sessions.get(i).startTime().toString() + "-" + sessions.get(i).endTime().toString();
 			}
 			scheduleByTermConverted.put(term, tableData);
