@@ -28,7 +28,7 @@ public class AdminModel
 	{
 		return UniversityInformationTable.getInstance().getData().name();
 	}
-	public void setUniversityName(String name)
+	public void updateUniversityName(String name)
 	{
 		UniversityInformationTable.getInstance().getData().setName(name);
 	}
@@ -52,9 +52,9 @@ public class AdminModel
 	{
 		RoomsTable.getInstance().getData().remove(id);
 	}
-	public void updateRoom(int id, Room room)
+	public void updateRoom(Room room)
 	{
-		RoomsTable.getInstance().getData().replace(id, room);
+		RoomsTable.getInstance().getData().replace(room.id(), room);
 	}
 	public void addCollege(College college)
 	{
@@ -100,9 +100,9 @@ public class AdminModel
 	{
 		CoursesTable.getInstance().getData().remove(id);
 	}
-	public void updateCourse(int id, Course course)
+	public void updateCourse(Course course)
 	{
-		CoursesTable.getInstance().getData().replace(id, course);
+		CoursesTable.getInstance().getData().replace(course.id(), course);
 	}
 	public void addSession(Session session)
 	{
@@ -112,9 +112,9 @@ public class AdminModel
 	{
 		SessionsTable.getInstance().getData().remove(id);
 	}
-	public void updateSession(int id, Session session)
+	public void updateSession(Session session)
 	{
-		SessionsTable.getInstance().getData().replace(id, session);
+		SessionsTable.getInstance().getData().replace(session.id(), session);
 	}
 	public void addUserAccount(User user)
 	{
@@ -124,9 +124,9 @@ public class AdminModel
 	{
 		UsersTable.getInstance().getData().remove(id);
 	}
-	public void updateUserAccount(int id, User user)
+	public void updateUserAccount(User user)
 	{
-		UsersTable.getInstance().getData().replace(id, user);
+		UsersTable.getInstance().getData().replace(user.id(), user);
 	}
 	public void addEmployeeAccount(Employee employee)
 	{
@@ -136,9 +136,9 @@ public class AdminModel
 	{
 		EmployeesTable.getInstance().getData().remove(id);
 	}
-	public void updateEmployeeAccount(int id, Employee employee)
+	public void updateEmployeeAccount(Employee employee)
 	{
-		EmployeesTable.getInstance().getData().replace(id, employee);
+		EmployeesTable.getInstance().getData().replace(employee.id(), employee);
 	}
 	public void addStudentAccount(Student student)
 	{
@@ -148,9 +148,9 @@ public class AdminModel
 	{
 		StudentsTable.getInstance().getData().remove(id);
 	}
-	public void updateStudentAccount(int id, Student student)
+	public void updateStudentAccount(Student student)
 	{
-		StudentsTable.getInstance().getData().replace(id, student);
+		StudentsTable.getInstance().getData().replace(student.id(), student);
 	}
 	public TreeMap<Integer, User> getUserAccounts()
 	{
