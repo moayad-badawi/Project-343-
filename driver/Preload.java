@@ -32,7 +32,7 @@ public class Preload
 		ArrayList<Integer> prereqs = new ArrayList<>();
 		ArrayList<Integer> sessions = new ArrayList<>();
 		sessions.add(0);			// session 0 belongs to CECS 225
-		Course course = new Course(cid, "CECS 225", prereqs, sessions);
+		Course course = new Course(cid, "CECS 225", 3, prereqs, sessions);
 		CoursesTable.getInstance().getData().put(course.id(), course);
 		// CECS 341, course 1 in major 0 in department 0 in college 0 in university, prereq = CECS 225(cid = 0)
 		cid = CoursesTable.getInstance().getID();
@@ -40,7 +40,7 @@ public class Preload
 		prereqs.add(0);
 		sessions = new ArrayList<>();
 		sessions.add(1);			// session 1 belongs to CECS 341
-		course = new Course(cid, "CECS 341", prereqs, sessions);
+		course = new Course(cid, "CECS 341", 3, prereqs, sessions);
 		CoursesTable.getInstance().getData().put(course.id(), course);
 		// superadmin, user 0
 		int uid = UsersTable.getInstance().getID();
@@ -84,10 +84,10 @@ public class Preload
 		sessions = new ArrayList<>();
 		sessions.add(0);		// CECS 225
 		sessions.add(1);		// CECS 341
-		Student student = new Student(uid, "O", "M", "G", "Computer Science", "Paid", sessions);
+		Student student = new Student(uid, "O", "M", "G", "Computer Science", "Paid", sessions, 0);
 		StudentsTable.getInstance().getData().put(student.id(), student);
 		// building
-		Room room = new Room(0, 30, "VEC");			// room 0
+		Room room = new Room(0, 1, 30, "VEC");			// room 0
 		RoomsTable.getInstance().getData().put(room.id(), room);
 		//ArrayList<Room> rooms = new ArrayList<>();
 		//rooms.add(room);
@@ -99,7 +99,7 @@ public class Preload
 		LocalTime endTime = LocalTime.of(12, 50);
 		ArrayList<Integer> roster = new ArrayList<>();
 		roster.add(5);
-		Session session = new Session(sid, 0, 4, startTime, endTime, "Fall", 2018, "MW", "VEC", 0, 30, roster);
+		Session session = new Session(sid, 0, 4, startTime, endTime, "Fall", 2018, "MW", "VEC", 0, 1, 30, roster);
 		SessionsTable.getInstance().getData().put(session.id(), session);
 		// session 1, of CECS 341 (cid = 1), instructorID = 4,
 		sid = SessionsTable.getInstance().getID();
@@ -107,7 +107,7 @@ public class Preload
 		endTime = LocalTime.of(16, 30);
 		roster = new ArrayList<>();
 		roster.add(5);
-		session = new Session(sid, 1, 4, startTime, endTime, "Fall", 2018, "TTh", "VEC", 0, 30, roster);
+		session = new Session(sid, 1, 4, startTime, endTime, "Fall", 2018, "TTh", "VEC", 0, 1, 30, roster);
 		SessionsTable.getInstance().getData().put(session.id(), session);
 	}
 	/*public static void main(String[] args)
