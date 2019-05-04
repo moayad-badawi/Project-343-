@@ -8,6 +8,10 @@ import java.util.ArrayList;
 public class AdminModel
 {
 	public AdminModel() {}
+	public String getAllUsers()
+	{
+		return UsersTable.getInstance().getData().toString();
+	}
 	public int generateUserID()
 	{
 		return UsersTable.getInstance().getID();
