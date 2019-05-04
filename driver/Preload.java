@@ -2,6 +2,8 @@ package driver;
 // add roomsTable
 import database.*;
 import datatypes.*;
+import model.SuperAdminModel;
+
 import java.util.ArrayList;
 import java.time.LocalTime;
 
@@ -10,7 +12,7 @@ public class Preload
 	public Preload() {}
 	public void load()
 	{
-		// University
+		/*// University
 		UniversityInformationTable.getInstance().getData().setName("CSULB");
 		// College of Engineering, college 0 in university
 		ArrayList<String> departments = new ArrayList<>();
@@ -108,24 +110,28 @@ public class Preload
 		roster = new ArrayList<>();
 		roster.add(5);
 		session = new Session(sid, 1, 4, startTime, endTime, "Fall", 2018, "TTh", "VEC", 0, 1, 30, roster);
-		SessionsTable.getInstance().getData().put(session.id(), session);
+		SessionsTable.getInstance().getData().put(session.id(), session);*/
+		SuperAdminModel sam = new SuperAdminModel();
+		Admin a10 = new Admin(-1, "a", "a", "a");
+		Admin a11 = new Admin(-1, "b", "b", "b");
+		Admin a12 = new Admin(-1, "c", "c", "c");
+		Admin a13 = new Admin(-1, "d", "d", "d");
+		sam.addAdminAccount(a10, "admin");
+		sam.addAdminAccount(a11, "admin");
+		sam.addAdminAccount(a12, "admin");
+		sam.addAdminAccount(a13, "admin");
+		Object obj[][] = sam.getAllAdminsConverted();
+		System.out.println(AdminsTable.getInstance().getData().size());
+		for(int i = 0; i < AdminsTable.getInstance().getData().size() - 1; i++)
+		{
+			for(int j = 0; j < 4; j++)
+				System.out.print(obj[i][j]);
+			System.out.println();
+		}
 	}
-	/*public static void main(String[] args)
+	public static void main(String[] args)
 	{
-		TreeMap<Integer, ArrayList<String>> a = new TreeMap<>();
-		ArrayList<String> S = new ArrayList<>();
-		S.add("zero");
-		a.put(0, S);
-		ArrayList<String> S1 = new ArrayList<>();
-		S1.add("one");
-		a.put(1, S1);
-		S1.add("two");
-		a.put(1, S1);
-		// S = [ <0,S>, <1,S1> ]
-		for(int i : a.navigableKeySet())
-			System.out.println(i + " " + a.get(i));
-		LocalTime t = LocalTime.of(17, 00);
-		LocalTime v = LocalTime.of(18, 00);
-		System.out.println(t.isBefore(v));
-	}*/
+		Preload p = new Preload();
+		p.load();
+	}
 }
