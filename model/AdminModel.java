@@ -24,6 +24,10 @@ public class AdminModel
 	{
 		return RoomsTable.getInstance().getID();
 	}
+	public String getUniversityName()
+	{
+		return UniversityInformationTable.getInstance().getData().name();
+	}
 	public void addBuilding(Building building)
 	{
 		BuildingsTable.getInstance().getData().put(building.name(), building);
@@ -34,8 +38,7 @@ public class AdminModel
 	}
 	public void updateBuilding(String name, Building building)
 	{
-		removeBuilding(name);
-		addBuilding(building);
+		BuildingsTable.getInstance().getData().replace(name, building);
 	}
 	public void addRoom(Room room)
 	{
@@ -59,8 +62,7 @@ public class AdminModel
 	}
 	public void updateCollege(String name, College college)
 	{
-		removeCollege(name);
-		addCollege(college);
+		CollegesTable.getInstance().getData().replace(name, college);
 	}
 	public void addDepartment(Department dept)
 	{
@@ -72,8 +74,7 @@ public class AdminModel
 	}
 	public void updateDepartment(String name, Department dept)
 	{
-		removeDepartment(name);
-		addDepartment(dept);
+		DepartmentsTable.getInstance().getData().replace(name, dept);
 	}
 	public void addMajor(Major major)
 	{
@@ -85,8 +86,7 @@ public class AdminModel
 	}
 	public void updateMajor(String name, Major major)
 	{
-		removeMajor(name);
-		addMajor(major);
+		MajorsTable.getInstance().getData().replace(name, major);
 	}
 	public void addCourse(Course course)
 	{
@@ -171,7 +171,7 @@ public class AdminModel
 		int[] key = {studentID, courseID};
 		GradesTable.getInstance().getData().put(key, grade);
 	}
-	public String addSessionCheck(Session session)
+	/*public String addSessionCheck(Session session)
 	{
 		ArrayList<Session> termSessions = new ArrayList<>();
 		TreeMap<Integer, Session> st = SessionsTable.getInstance().getData();
@@ -194,5 +194,6 @@ public class AdminModel
 				}
 			}
 		}
-	}
+	}*/
+	
 }
