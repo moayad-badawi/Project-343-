@@ -1,4 +1,4 @@
-# Project-343-
+# Project-343-School-System
 
 Welcome to our school project for introduction of software engineering!
 
